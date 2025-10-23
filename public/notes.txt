@@ -1,0 +1,280 @@
+---
+
+## 🧩 DOM Manipulation Essentials
+
+these let you *access and change* parts of your HTML page using JavaScript.
+
+### **Selecting elements**
+
+| method                                  | what it does                                                           | example                                        |
+| --------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------- |
+| `document.getElementById("id")`         | selects one element by ID                                              | `const el = document.getElementById("title");` |
+| `document.querySelector("selector")`    | selects the **first** element matching a CSS selector (class, id, tag) | `document.querySelector(".item")` or `#id`     |
+| `document.querySelectorAll("selector")` | selects **all** elements matching, returns a NodeList                  | `document.querySelectorAll(".item")`           |
+
+---
+
+### **Changing content**
+
+| property              | meaning                         | example                       |
+| --------------------- | ------------------------------- | ----------------------------- |
+| `.textContent`        | sets/gets plain text            | `el.textContent = "Hello!";`  |
+| `.innerHTML`          | sets/gets HTML inside element   | `el.innerHTML = "<b>Hi</b>";` |
+| `.value`              | gets/sets the value of an input | `input.value = "Name";`       |
+| `.style.propertyName` | changes inline CSS style        | `el.style.color = "red";`     |
+
+---
+
+### **Events (user interaction)**
+
+| method                                 | purpose                          | example |
+| -------------------------------------- | -------------------------------- | ------- |
+| `.addEventListener("event", function)` | runs code when something happens |         |
+
+````js
+button.addEventListener("click", () => alert("clicked!"));
+``` |
+| `e.preventDefault()` | stops default behavior (like form submit or link opening) | used in your `seller-link` code |
+| `alert("msg")` | pop-up message | simple debugging or warnings |
+| `prompt("msg")` | input box for user text | returns user’s input string |
+
+---
+
+### **Local storage**
+persists data even after reloading the page.
+
+| code | description |
+|------|--------------|
+| `localStorage.setItem("key", value)` | save data (value must be a string) |
+| `localStorage.getItem("key")` | get stored data |
+| `localStorage.removeItem("key")` | delete specific data |
+| `localStorage.clear()` | delete all data |
+| `JSON.stringify(object)` | convert object → string (before saving) |
+| `JSON.parse(string)` | convert string → object (after loading) |
+
+---
+
+### **Loops & arrays you might need**
+```js
+// Loop through array
+for (let item of arr) console.log(item);
+
+// Loop through object keys
+for (let key in obj) console.log(key, obj[key]);
+
+// Array methods
+arr.forEach(item => console.log(item));
+arr.map(x => x * 2);
+arr.filter(x => x > 5);
+arr.reduce((sum, x) => sum + x, 0);
+````
+
+---
+
+### **Functions**
+
+```js
+// Regular
+function greet(name) {
+  return "Hello " + name;
+}
+
+// Arrow function
+const greet = (name) => "Hello " + name;
+```
+
+---
+
+### **Conditionals**
+
+```js
+if (x > 10) console.log("big");
+else if (x === 10) console.log("equal");
+else console.log("small");
+```
+
+---
+
+### **Template literals**
+
+```js
+let name = "Anindya";
+console.log(`Hi, ${name}!`); // → Hi, Anindya!
+```
+
+---
+
+### **Objects**
+
+```js
+let person = {
+  name: "Phainon",
+  age: 20,
+  greet() {
+    console.log("hi!");
+  }
+};
+
+console.log(person.name); // "Phainon"
+person.greet(); // "hi!"
+```
+
+hhhhhhhhhh  flwo
+---
+
+### Overall Flow Summary (Cart + Promo + Seller Link)
+
+#### 1. **Seller Link Access**
+
+```js
+document.getElementById("seller-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  const password = prompt("Enter seller password:");
+  if (password === "letmein123") { 
+      window.location.href = "/seller";
+  } else {
+      alert("you can't get in sorry ");
+  }
+});
+```
+
+**Flow:**
+
+1. Detects when user clicks the seller link (`addEventListener("click")`).
+2. Prevents the default link action (so it doesn’t instantly go somewhere).
+3. Prompts the user for a password.
+4. If password is correct → redirect to `/seller` page.
+5. Otherwise → show an alert (“you can’t get in sorry ”).
+
+---
+
+#### 2. **Promo Text Rotation**
+
+```js
+const promo = document.querySelector(".home-promo p");
+const promos = [
+  "Special Promo: Buy Confidence get Arrogance!",
+  "Limited Time: Lazy + Procrastination Combo Pack!",
+  "Hot Deal: Buy Curiosity, get Anxiety free!"
+];
+let promoIndex = 0;
+
+setInterval(() => {
+  promoIndex = (promoIndex + 1) % promos.length;
+  promo.textContent = promos[promoIndex];
+}, 5000);
+```
+
+**Flow:**
+
+1. Finds the `<p>` inside `.home-promo`.
+2. Stores multiple promo texts in an array.
+3. Keeps track of which promo is currently showing (`promoIndex`).
+4. Every 5 seconds (`setInterval`):
+
+   * Increase index by 1 (looping back to 0 using `%`).
+   * Replace the text of the promo (`.textContent`).
+
+---
+
+#### 3. **Cart Function (typical example)**
+
+```js
+const cart = [];
+
+function addToCart(itemName, price) {
+  cart.push({ name: itemName, price: price });
+  alert(`${itemName} added to cart!`);
+  updateCartDisplay();
+}
+
+function updateCartDisplay() {
+  const cartList = document.getElementById("cart-items");
+  cartList.innerHTML = ""; 
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - $${item.price}`;
+    cartList.appendChild(li);
+  });
+}
+```
+
+**Flow:**
+
+1. Starts with an empty array `cart` to store items.
+2. `addToCart`:
+
+   * Adds a new item to the cart.
+   * Shows an alert confirming addition.
+   * Updates the cart display visually.
+3. `updateCartDisplay`:
+
+   * Clears current list (`innerHTML = ""`).
+   * Loops through `cart` and makes `<li>` for each.
+   * Adds them to the page.
+
+---
+
+### Summary of Core Concepts You Should Remember
+
+| Concept                            | Description                                     | Example                            |
+| ---------------------------------- | ----------------------------------------------- | ---------------------------------- |
+| `document.getElementById()`        | Selects element by ID                           | `document.getElementById("cart")`  |
+| `document.querySelector()`         | Selects first matching element (class, id, tag) | `.class`, `#id`, `div`             |
+| `.addEventListener("click", func)` | Adds a click listener                           | `btn.addEventListener("click", f)` |
+| `e.preventDefault()`               | Stops default behavior (like link redirect)     | used in forms or links             |
+| `prompt()`                         | Ask user for input                              | `prompt("Enter name")`             |
+| `alert()`                          | Show message popup                              | `alert("Hello!")`                  |
+| `setInterval(func, time)`          | Repeats a function every X ms                   | `setInterval(changeText, 5000)`    |
+| `.textContent`                     | Change text inside element                      | `p.textContent = "New text"`       |
+| `.innerHTML`                       | Change HTML content inside element              | `div.innerHTML = "<b>Hi</b>"`      |
+| `createElement()`                  | Make new HTML element                           | `document.createElement("li")`     |
+| `appendChild()`                    | Add new element to page                         | `ul.appendChild(li)`               |
+
+---
+
+                ┌───────────────────────────┐
+                │   Page Loads (HTML ready)  │
+                └──────────────┬────────────┘
+                               │
+       ┌───────────────────────┼────────────────────────┐
+       │                       │                        │
+┌──────▼───────┐        ┌──────▼────────┐         ┌─────▼──────────┐
+│ Seller Link  │        │ Promo Rotator │         │  Cart System   │
+└──────┬───────┘        └──────┬────────┘         └─────┬──────────┘
+       │                        │                        │
+(click event)             (every 5 seconds)         (user clicks “add”)
+       │                        │                        │
+       ▼                        ▼                        ▼
+Prompt for password     Increase promoIndex        Call addToCart(item)
+       │                by 1 and wrap around              │
+       │                        │                        │
+Correct? ──► Yes ─► Redirect    │                        │
+       │                        ▼                        │
+       └─► No ─► alert()   Update textContent      Push {name, price}
+                                   │                        │
+                                   │                        ▼
+                                   └────────────► updateCartDisplay()
+                                                        │
+                                                        ▼
+                                             Refresh list visually (innerHTML)
+
+URL ?name=...  
+   ↓
+read productName  
+   ↓
+find matching product in data  
+   ↓
+update page text + image + price  
+   ↓
+show product reviews  
+   ↓
+set Add to Cart button behavior
+
+instead of storing products + quantity (like the cart), the wishlist just stores a list of product names (strings).
+
+| function                          | purpose                                         | conceptually same as               |
+| --------------------------------- | ----------------------------------------------- | ---------------------------------- |
+| `addToWishlist(productName)`      | adds an item (by name) to the localStorage list | `addToCart()`                      |
+| `updateWishlistCount()`           | counts how many items and updates display       | `updateCartCount()`                |
+| `removeFromWishlist(productName)` | deletes one from the list and refreshes         | `updateQuantity()` / `clearCart()` |

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shop</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="index"><img src="./assets/logo.png" alt="PersonaMart Logo"></a>
+
+                <section class="search">
+                    <input type="text" placeholder="Search Personalities...">
+                    <button>Search</button>
+                </section>
+
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/shop">Personalities</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#" id="seller-link">Seller Dashboard</a></li>
+                    <li><a href="/wishlist">Wishlist 💖</a></li>
+                    <li><a href="/checkout">Checkout 🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main class="product-detail">
+            <div class="product-info">
+                <img id="product-img" src="" alt="Product Image">
+                <div class="product-text">
+                    <h1 id="product-title">Product Name</h1>
+                    <h2 id="product-price">Price</h2>
+                    <h3 id ="product-sold">Sold</h3>
+                    <p id="product-desc">Description</p>
+                    <button id="add-to-heart">Add to Heart</button>
+                </div>
+            </div>
+            <div class="product-reviews">
+                <section >
+                <h2>Reviews</h2>
+                <ul id="product-reviews-list"></ul>
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 PersonaMart</p>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank">
+                <img src="./assets/instagram.jpeg" alt="Instagram">
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                <img src="./assets/facebook.jpeg" alt="Facebook">
+                </a>
+                <a href="mailto:support@personamart.fake">
+                <img src="./assets/email.jpeg" alt="Email">
+                </a>
+                </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

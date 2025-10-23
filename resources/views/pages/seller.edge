@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - PersonaMart</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/index"><img src="./assets/logo.png" alt="PersonaMart Logo"></a>
+
+            <section class="search">
+                <input type="text" placeholder="Search Personalities...">
+                <button>Search</button>
+            </section>
+
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/shop">Personalities</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="#" onclick="logoutSeller()">Logout Seller</a></li>
+                <li><a href="/wishlist">Wishlist 💖</a></li>
+                <li><a href="/checkout">Checkout 🛒 <span id="cart-count">0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="seller-dashboard">
+        <h1>Seller Dashboard 🛠️</h1>
+
+        <section class="add-product">
+            <h2>Add New Product</h2>
+            <form id="add-product-form">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="file" id="product-img" accept="image/*" required>
+                <textarea id="product-desc" placeholder="Description" required></textarea>
+                <input type="text" id="product-price" placeholder="Price" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 PersonaMart</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="seller.js"></script>
+</body>
+</html>

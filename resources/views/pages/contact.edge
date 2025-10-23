@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PersonaMart</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a href="index.html"><img src="./assets/logo.png" alt="PersonaMart Logo"></a>
+
+                <section class="search">
+                    <input type="text" placeholder="Search Personalities...">
+                    <button>Search</button>
+                </section>
+
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/shop">Personalities</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#" id="seller-link">Seller Dashboard</a></li>
+                    <li><a href="/wishlist">Wishlist 💖</a></li>
+                    <li><a href="/checkout">Checkout 🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="contact">
+            <h1>Contact Us</h1>
+            <p>Our customer support personalities are available 24/7. Choose “Patient Listener” or “Motivational Speaker” when reaching out to us.</p>
+
+            <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Which personality are you interested in today?"></textarea>
+
+                 <button type="submit">Send</button>
+            </form>
+
+            <div class="contact-info">
+                <p>📍 Address: 123 Identity Lane, Imaginaria</p>
+                <p>📞 Phone: 555-PERSONA</p>
+                <p>✉️ Email: support@personamart.fake</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 PersonaMart</p>
+            <div class="social-icons">
+                <a href="https://instagram.com/" target="_blank">
+                <img src="./assets/instagram.jpeg" alt="Instagram">
+                </a>
+                <a href="https://facebook.com/" target="_blank">
+                <img src="./assets/facebook.jpeg" alt="Facebook">
+                </a>
+                <a href="mailto:support@personamart.fake">
+                <img src="./assets/email.jpeg" alt="Email">
+                </a>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
